@@ -1,0 +1,11 @@
+# Ignore Excel and CSV data files (Too large for GitHub)
+*.xlsx
+*.csv
+
+# Ignore Python virtual environments & cache
+__pycache__/
+*.pyc
+.streamlit/
+
+# Ignore local database configurations or secrets
+.env

@@ -1,0 +1,7 @@
+pandas
+sqlalchemy
+pymysql
+openpyxl
+streamlit
+matplotlib
+seaborn
