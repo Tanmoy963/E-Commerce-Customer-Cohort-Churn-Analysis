@@ -2,6 +2,11 @@
 
 An end-to-end analytics project analyzing customer retention across 13 monthly cohorts using **MySQL**, **Python**, and **Streamlit**.
 
+[![CI](https://github.com/Tanmoy963/E-Commerce-Customer-Cohort-Churn-Analysis/actions/workflows/python-ci.yml/badge.svg)](https://github.com/Tanmoy963/E-Commerce-Customer-Cohort-Churn-Analysis/actions)
+[![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
+
+Demo: ![demo placeholder](assets/demo-placeholder.gif)
+
 ---
 
 ## 📌 Project Overview
