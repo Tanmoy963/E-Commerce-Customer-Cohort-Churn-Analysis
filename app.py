@@ -21,19 +21,19 @@ st.markdown(
 # Load Data and Execute SQL Query directly
 @st.cache_data
 def load_cohort_data():
-  # URL to raw CSV on GitHub (allows the live app to run independently)
+  # URL to raw CSV on GitHub
   data_url = 'https://raw.githubusercontent.com/guipsamora/pandas_exercises/master/07_Visualization/Online_Retail/Online_Retail.csv'
 
   # Connect to in-memory SQL database
   con = duckdb.connect(database=':memory:')
 
-  # SQL Query using CTEs and TRY_CAST for robust date parsing
+  # SQL Query reading InvoiceDate strictly as VARCHAR, then parsing with strptime
   query = f"""
     WITH cleaned_data AS (
         SELECT 
             CAST(CustomerID AS INT) AS customer_id,
-            TRY_CAST(InvoiceDate AS TIMESTAMP) AS invoice_date
-        FROM read_csv_auto('{data_url}')
+            strptime(InvoiceDate, '%m/%d/%y %H:%M') AS invoice_date
+        FROM read_csv_auto('{data_url}', types={{'InvoiceDate': 'VARCHAR'}})
         WHERE CustomerID IS NOT NULL
     ),
     customer_cohorts AS (
