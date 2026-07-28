@@ -27,12 +27,12 @@ def load_cohort_data():
   # Connect to in-memory SQL database
   con = duckdb.connect(database=':memory:')
 
-  # SQL Query using CTEs and SQL Date Functions
+  # SQL Query using CTEs and TRY_CAST for robust date parsing
   query = f"""
     WITH cleaned_data AS (
         SELECT 
             CAST(CustomerID AS INT) AS customer_id,
-            strptime(InvoiceDate, '%m/%d/%Y %H:%M') AS invoice_date
+            TRY_CAST(InvoiceDate AS TIMESTAMP) AS invoice_date
         FROM read_csv_auto('{data_url}')
         WHERE CustomerID IS NOT NULL
     ),
